@@ -1,6 +1,7 @@
 function NavBar() {
   return (
     <nav>
+        <h1 className="title">Shoppy Globe</h1>
         <ul>
             <li>Home</li>
             <li>Products</li>
