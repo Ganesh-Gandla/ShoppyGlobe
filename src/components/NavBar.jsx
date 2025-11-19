@@ -26,7 +26,7 @@ function NavBar() {
 
       <h1 className="title">ShoppyGlobe</h1>
 
-      <Link to={"/CartPage"}><img src="cart-icon.png" alt="Cart" className="cart-icon" /></Link>
+      <Link to={"/CartPage"}><img src="./cart.png" alt="Cart" className="cart-icon" /></Link>
     </nav>
   );
 }
