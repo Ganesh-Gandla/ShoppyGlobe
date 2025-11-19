@@ -2,6 +2,7 @@ import "../styles/ProductList.css"
 import ProductItem from "./ProductItem";
 import { useState, useEffect } from "react";
 import useFetch from "../utils/useFetch";
+import { Link } from "react-router-dom";
 
 function ProductList() {
 
@@ -28,7 +29,7 @@ function ProductList() {
       ) : (
         <div className="product-grid">
           {products.map((product) => (
-            <ProductItem key={product.id} product={product} />
+            <Link to={`/products/${product.id}`} key={product.id}><ProductItem key={product.id} product={product} /></Link>
           ))}
         </div>
       )}

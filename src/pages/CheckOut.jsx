@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 
 function CheckOut (){
@@ -5,7 +6,7 @@ function CheckOut (){
         <div>
             <form action=""></form>
             <CartItem />
-            <button>Place Order</button>
+            <Link to={"/"}><button>Place Order</button></Link>
         </div>
     )
 }

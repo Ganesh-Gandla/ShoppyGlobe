@@ -1,0 +1,110 @@
+/* NAVBAR BASE STYLE */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  background: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links li {
+  
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 16px;
+}
+
+nav a{
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.nav-links li:hover {
+  color: #f8c400;
+}
+
+/* CART ICON */
+.cart-icon {
+  width: 32px;
+  cursor: pointer;
+}
+
+/* HAMBURGER MENU (only visible in mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+}
+
+/* ---------- RESPONSIVE STYLES ---------- */
+
+/* Tablets and mobile */
+@media (max-width: 900px) {
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+    gap: 20px;
+    display: none;
+    
+  }
+
+
+  /* Show menu when open */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .cart-icon {
+    width: 28px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .nav-links li {
+    font-size: 14px;
+  }
+
+  .cart-icon {
+    width: 24px;
+  }
+}
