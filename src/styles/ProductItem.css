@@ -1,83 +1,126 @@
-.product-card {
-  width: 250px;
+/* ===== Product Card ===== */
+.pi-card {
   background: #fff;
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: center;
+  padding: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Reduced overall spacing */
+  height: 100%;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.pi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.product-image {
+/* ===== Image Section ===== */
+.pi-image-wrapper {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 170px;
+  background: #f5f5f5;
   border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.product-title {
-  font-size: 18px;
+.pi-image {
+  width: 90%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pi-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   GROUP 1: Title + Brand
+   ========================= */
+.pi-title {
+  font-size: 15px;
   font-weight: 600;
-  margin-top: 10px;
+  color: #222;
+  line-height: 1.2;
+  height: 36px;
+  overflow: hidden;
+  margin-top: 8px;
 }
 
-.product-brand {
-  color: #666;
-  font-size: 14px;
-}
-
-.product-price-section {
-  margin: 10px 0;
-}
-
-.product-price {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.product-discount {
-  margin-left: 8px;
-  color: red;
-  font-weight: 500;
-}
-
-.product-rating {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-.product-stock {
-  font-size: 14px;
-  color: green;
-  font-weight: 500;
-}
-
-.product-category {
-  margin-top: 5px;
+.pi-brand {
   font-size: 12px;
-  background: #f1f1f1;
-  padding: 3px 10px;
-  border-radius: 20px;
-  display: inline-block;
+  color: #666;
+  margin-top: -4px; /* Reduce spacing tightly */
 }
 
-.add-to-cart-btn {
-  margin-top: 12px;
-  padding: 10px 15px;
-  width: 100%;
-  background: #0d6efd;
-  color: white;
-  border: none;
+/* =========================
+   GROUP 2: Price + Discount
+   ========================= */
+.pi-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px; /* tighten */
+}
+
+.pi-price {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+}
+
+.pi-discount {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d62828;
+  background: #ffe6e6;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+/* =========================
+   GROUP 3: Rating + Category
+   ========================= */
+.pi-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.pi-rating {
+  font-size: 13px;
+  color: #444;
+}
+
+.pi-category {
+  font-size: 11px;
+  background: #efefef;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+/* =========================
+   GROUP 4: Add to Cart Button
+   ========================= */
+.pi-cart-btn {
+  margin-top: 4px;
+  padding: 9px 12px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
   border-radius: 8px;
-  font-size: 16px;
+  border: none;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.add-to-cart-btn:hover {
-  background: #0956c7;
+.pi-cart-btn:hover {
+  background: #333;
 }
