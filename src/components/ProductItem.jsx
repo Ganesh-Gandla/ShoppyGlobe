@@ -1,6 +1,13 @@
 import "../styles/ProductItem.css"
+import { useDispatch } from "react-redux";
+import { addToCart } from "../utils/cartSlice";
 
 function ProductItem({ product }) {
+  const dispatch = useDispatch();
+
+
+
+
   return (
     <div className="product-card">
       {/* Product Image */}
@@ -34,7 +41,7 @@ function ProductItem({ product }) {
       <p className="product-category">{product.category}</p>
 
       {/* Add to Cart */}
-      <button className="add-to-cart-btn">Add to Cart</button>
+      <button className="add-to-cart-btn" onClick={()=>dispatch(addToCart(product))}>Add to Cart</button>
     </div>
   );
 }

@@ -29,7 +29,8 @@ function ProductList() {
       ) : (
         <div className="product-grid">
           {products.map((product) => (
-            <Link to={`/products/${product.id}`} key={product.id}><ProductItem key={product.id} product={product} /></Link>
+            // <Link to={`/products/${product.id}`} key={product.id}><ProductItem key={product.id} product={product} /></Link>
+            <ProductItem key={product.id} product={product} />
           ))}
         </div>
       )}
