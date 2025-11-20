@@ -1,10 +1,14 @@
 import "../styles/CheckOut.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../utils/cartSlice";
+
 
 function CheckOut() {
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
 
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -14,6 +18,7 @@ function CheckOut() {
   const handlePlaceOrder = (e) => {
     e.preventDefault();
     alert("Order Placed Successfully!");
+    dispatch(clearCart())
     navigate("/");
   };
 
