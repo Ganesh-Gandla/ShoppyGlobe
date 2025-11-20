@@ -1,4 +1,4 @@
-/* NAVBAR BASE STYLE */
+/* ---------------- NAVBAR BASE STYLE ---------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -11,26 +11,30 @@
   z-index: 1000;
 }
 
+/* Center title on large screen */
 .title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
+  letter-spacing: 1px;
+  flex: 1;
+  text-align: center;
 }
 
-/* NAV LINKS */
+/* ---------------- NAV LINKS ---------------- */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 30px;
+  align-items: center;
 }
 
 .nav-links li {
-  
   cursor: pointer;
   transition: 0.3s ease;
   font-size: 16px;
 }
 
-nav a{
+nav a {
   text-decoration: none;
   color: aliceblue;
 }
@@ -39,13 +43,39 @@ nav a{
   color: #f8c400;
 }
 
-/* CART ICON */
-.cart-icon {
-  width: 32px;
-  cursor: pointer;
+/* ---------------- CART ICON + BADGE ---------------- */
+.cart-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
-/* HAMBURGER MENU (only visible in mobile) */
+.cart-icon {
+  width: 34px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.12);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #ff3b30;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 2px;
+  border-radius: 50%;
+  border: 2px solid #111;
+  min-width: 20px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* ---------------- HAMBURGER MENU ---------------- */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -54,16 +84,21 @@ nav a{
 }
 
 .hamburger span {
-  width: 26px;
+  width: 28px;
   height: 3px;
   background: white;
   border-radius: 3px;
 }
 
-/* ---------- RESPONSIVE STYLES ---------- */
+/* ---------------- RESPONSIVE ---------------- */
 
-/* Tablets and mobile */
+/* Tablets & Mobile */
 @media (max-width: 900px) {
+  .title {
+    text-align: left;
+    font-size: 22px;
+    margin-left: 10px;
+  }
 
   .nav-links {
     position: absolute;
@@ -73,14 +108,12 @@ nav a{
     background: #111;
     flex-direction: column;
     text-align: center;
-    padding: 20px 0;
-    gap: 20px;
+    padding: 25px 0;
+    gap: 25px;
     display: none;
-    
+    border-top: 1px solid #222;
   }
 
-
-  /* Show menu when open */
   .nav-links.open {
     display: flex;
   }
@@ -90,11 +123,11 @@ nav a{
   }
 
   .cart-icon {
-    width: 28px;
+    width: 32px;
   }
 }
 
-/* Very small phones */
+/* Very Small Phones */
 @media (max-width: 480px) {
   .title {
     font-size: 20px;
@@ -105,6 +138,13 @@ nav a{
   }
 
   .cart-icon {
-    width: 24px;
+    width: 26px;
+  }
+
+  .cart-count {
+    font-size: 8px;
+    padding: 2px 0px;
+    right: -8px;
+    top: -5px;
   }
 }
