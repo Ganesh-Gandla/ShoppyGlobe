@@ -10,6 +10,7 @@ import CheckOut from './pages/CheckOut.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 const provider = createBrowserRouter([
   {
@@ -40,7 +41,8 @@ const provider = createBrowserRouter([
         path: "/Contact",
         element: <Contact />
       }
-    ]
+    ],
+    errorElement: <NotFound />
   },
 
 ])
