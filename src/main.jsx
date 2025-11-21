@@ -16,10 +16,11 @@ const provider = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home />
       },
       {
         path: "/products/:id",
@@ -27,11 +28,11 @@ const provider = createBrowserRouter([
       },
       {
         path: "/CartPage",
-        element: <CartPage/>
+        element: <CartPage />
       },
       {
         path: "/CheckOut",
-        element: <CheckOut/>
+        element: <CheckOut />
       },
       {
         path: "/About",
@@ -40,15 +41,16 @@ const provider = createBrowserRouter([
       {
         path: "/Contact",
         element: <Contact />
-      }
+      },
     ],
-    errorElement: <NotFound />
+
   },
 
 ])
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router = {provider}/>
+    <RouterProvider router={provider} />
   </StrictMode>,
 )

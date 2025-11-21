@@ -1,63 +1,76 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../utils/useFetch";
 import { useEffect, useState } from "react";
 import "../styles/ProductPage.css";
 
+import { useDispatch } from "react-redux";
+import { addToCart } from "../utils/cartSlice";
+
 function ProductPage() {
+  const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
   const { data, error, isLoading } = useFetch("https://dummyjson.com/products");
 
   const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState("");
 
   useEffect(() => {
-    if (data) {
-      const found = data.find((item) => item.id == id);
+    if (data?.products) {
+      const found = data.products.find((item) => item.id == id);
       setProduct(found);
+      setMainImage(found?.images[0]);
     }
   }, [data, id]);
 
-  if (isLoading || !product) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (isLoading) return <p className="loading">Loading...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
+  if (!product) return <p className="error">Product not found.</p>;
 
   return (
-    <div className="product-page">
+    <div className="pp-container">
 
-      {/* LEFT: IMAGES */}
-      <div className="product-images">
-        <img
-          src={product.images[0]}
-          alt={product.title}
-          className="main-image"
-        />
+      {/* LEFT IMAGES */}
+      <div className="pp-left">
+        <img src={mainImage} alt={product.title} className="pp-main-img" />
 
-        <div className="thumbnail-list">
+        <div className="pp-thumbnails">
           {product.images.map((img, i) => (
-            <img key={i} src={img} alt="" className="thumbnail" />
+            <img
+              key={i}
+              src={img}
+              className={`pp-thumb ${mainImage === img ? "active" : ""}`}
+              onClick={() => setMainImage(img)}
+            />
           ))}
         </div>
       </div>
 
-      {/* RIGHT: DETAILS */}
-      <div className="product-details">
-        <h1 className="product-title">{product.title}</h1>
-        <p className="product-brand">Brand: {product.brand}</p>
+      {/* RIGHT DETAILS */}
+      <div className="pp-right">
+        <h1 className="pp-title">{product.title}</h1>
+        <p className="pp-brand">Brand: <b>{product.brand}</b></p>
 
-        <p className="product-price">₹{product.price}</p>
-        <p className="product-discount">
-          Discount: {product.discountPercentage}%
-        </p>
+        <div className="pp-price-box">
+          <span className="pp-price">₹{product.price}</span>
+          <span className="pp-discount">{product.discountPercentage}% OFF</span>
+        </div>
 
-        <p className="product-stock">
+        <p className="pp-status">
           Status: <b>{product.availabilityStatus}</b>
         </p>
 
-        <p className="product-description">{product.description}</p>
+        <p className="pp-description">{product.description}</p>
 
-        <div className="btns">
-          <button className="add-cart">Add to Cart</button>
-          <button className="buy-now">Buy Now</button>
+        <div className="pp-buttons">
+          <button onClick={() => dispatch(addToCart(product))} className="pp-cart-btn">Add to Cart</button>
+          <button onClick={() => {
+            dispatch(addToCart(product));
+            navigate("/checkout");
+          }} className="pp-buy-btn">Buy Now</button> 
         </div>
       </div>
+
     </div>
   );
 }

@@ -11,7 +11,7 @@ function ProductList() {
 
   const [products, setProducts] = useState([]);
 
-  const { data, error, isLoading, refetch } = useFetch("https://dummyjson.com/produ");
+  const { data, error, isLoading, refetch } = useFetch("https://dummyjson.com/products");
 
   useEffect(() => {
     if (data?.products) {
