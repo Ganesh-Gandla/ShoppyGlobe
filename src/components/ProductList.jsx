@@ -11,11 +11,11 @@ function ProductList() {
 
   const [products, setProducts] = useState([]);
 
-  const { data, error, isLoading } = useFetch("https://dummyjson.com/products");
+  const { data, error, isLoading, refetch } = useFetch("https://dummyjson.com/produ");
 
   useEffect(() => {
-    if (data) {
-      setProducts(data);
+    if (data?.products) {
+      setProducts(data.products);
     }
   }, [data]);
 
@@ -27,6 +27,7 @@ function ProductList() {
     <div className="product-list-container">
       <h2 className="product-list-title">Product List</h2>
 
+      {/* search bar */}
       <div className="search-wrapper">
         <input
           type="text"
@@ -37,11 +38,29 @@ function ProductList() {
         />
       </div>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
+      {/* Loading */}
+      {isLoading && <p className="info-message">Loading products...</p>}
+
+      {/* Error handling */}
+      {error && (
+        <div className="error-box">
+          <p className="error-text"> Failed to load products: {error}</p>
+
+          <button className="retry-btn" onClick={refetch}>
+            Retry
+          </button>
+        </div>
+      )}
+
+      {/* If no products available */}
+      {!isLoading && !error && filteredProducts.length === 0 && (
+        <p className="info-message no-results">
+          No products found matching your search.
+        </p>
+      )}
+
+      {/* Products Grid */}
+      {!isLoading && !error && (
         <div className="product-grid">
           {filteredProducts.map((product) => (
             <ProductItem key={product.id} product={product} />
