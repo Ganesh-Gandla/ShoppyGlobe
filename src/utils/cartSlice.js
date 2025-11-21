@@ -5,6 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     items: [],   // list of cart items
     totalQuantity: 0, // total items count
+    warningMessage: null,
   },
 
   reducers: {
@@ -19,7 +20,6 @@ const cartSlice = createSlice({
           ...newItem,
           quantity: 1
         });
-        // console.log(state.items[0])
       }
 
       state.totalQuantity += 1;
@@ -46,19 +46,24 @@ const cartSlice = createSlice({
       }
     },
 
-    decreaseQuantity: (state, action) => {
+      decreaseQuantity: (state, action) => {
       const id = action.payload;
       const item = state.items.find(item => item.id === id);
 
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-        state.totalQuantity -= 1;
+      if (!item) return;
+
+      if (item.quantity === 1) {
+        // Instead of removing → show warning
+        state.warningMessage = "Minimum quantity reached!";
+        return;
       }
-      else if (item && item.quantity === 1) {
-        // remove when quantity becomes 0
-        state.items = state.items.filter(i => i.id !== id);
-        state.totalQuantity -= 1;
-      }
+
+      item.quantity -= 1;
+      state.totalQuantity -= 1;
+      state.warningMessage = null;
+    },
+    clearWarning: (state) => {
+      state.warningMessage = null;
     },
     clearCart: (state) => {
       state.items = [];
@@ -71,6 +76,7 @@ export const {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  clearWarning,
   clearCart
 } = cartSlice.actions;
 

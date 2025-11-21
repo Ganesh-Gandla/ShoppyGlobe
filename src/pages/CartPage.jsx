@@ -1,14 +1,25 @@
 import "../styles/CartPage.css";
 import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { clearWarning } from "../utils/cartSlice";
 
 function CartPage() {
   const cartItems = useSelector((state) => state.cart.items);
+  const warning = useSelector((state) => state.cart.warningMessage);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (warning) {
+      alert(warning);
+      dispatch(clearWarning());  // reset warning
+    }
+  }, [warning]);
+
   const [totalAmount, setTotalAmount] = useState()
   useEffect(() => {
-    setTotalAmount(cartItems.reduce((total, item) => total + item.price*item.quantity, 0))
+    setTotalAmount(cartItems.reduce((total, item) => total + item.price * item.quantity, 0))
   }, [cartItems])
 
   return (
