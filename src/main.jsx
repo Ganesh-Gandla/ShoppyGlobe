@@ -1,16 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode, lazy, Suspense } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import Loader from "./components/Loader";
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ProductPage from './pages/ProductPage.jsx'
-import CartPage from './pages/CartPage.jsx'
-import CheckOut from './pages/CheckOut.jsx'
-import Home from './pages/Home.jsx'
-import About from './pages/About.jsx'
-import Contact from './pages/Contact.jsx'
-import NotFound from './pages/NotFound.jsx'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// Lazy loaded pages
+const Home = lazy(() => import("./pages/Home"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const CheckOut = lazy(() => import("./pages/CheckOut"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const provider = createBrowserRouter([
   {
@@ -27,30 +30,29 @@ const provider = createBrowserRouter([
         element: <ProductPage />
       },
       {
-        path: "/CartPage",
+        path: "/cartpage",
         element: <CartPage />
       },
       {
-        path: "/CheckOut",
+        path: "/checkout",
         element: <CheckOut />
       },
       {
-        path: "/About",
+        path: "/about",
         element: <About />
       },
       {
-        path: "/Contact",
+        path: "/contact",
         element: <Contact />
-      },
-    ],
+      }
+    ]
+  }
+]);
 
-  },
-
-])
-
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={provider} />
-  </StrictMode>,
-)
+    <Suspense fallback={<Loader />}>
+      <RouterProvider router={provider} />
+    </Suspense>
+  </StrictMode>
+);
