@@ -2,6 +2,7 @@ import "../styles/ProductItem.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
+import LazyImage from "./LazyImage";   // <-- import here
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();
@@ -11,7 +12,11 @@ function ProductItem({ product }) {
 
       <Link to={`/products/${product.id}`} className="pi-link">
         <div className="pi-image-wrapper">
-          <img src={product.thumbnail} alt={product.title} className="pi-image" />
+          <LazyImage
+            src={product.thumbnail}
+            alt={product.title}
+            className="pi-image"
+          />
         </div>
 
         {/* Group 1: Title + Brand */}

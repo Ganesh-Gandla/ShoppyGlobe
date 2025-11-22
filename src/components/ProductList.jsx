@@ -39,7 +39,12 @@ function ProductList() {
       </div>
 
       {/* Loading */}
-      {isLoading && <p className="info-message">Loading products...</p>}
+      {isLoading && (
+        <div className="info-message loader-wrapper">
+          <div className="loader"></div>
+          <p>Loading products...</p>
+        </div>
+      )}
 
       {/* Error handling */}
       {error && (
