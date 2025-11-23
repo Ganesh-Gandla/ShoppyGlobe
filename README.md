@@ -1,16 +1,65 @@
-# React + Vite
+# 🛒 ShopEase – React E-Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, fast, and responsive **E-Commerce Web Application** built using **React.js, Redux Toolkit, React Router, and CSS**.  
+Browse products, view details, add to cart, update quantities, and checkout smoothly with a modern UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 GitHub Repository  
+https://github.com/Ganesh-Gandla/ShoppyGlobe.git
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Browse all products**
+- **Search and filter by categories**
+- **Lazy-loading images with blur placeholder**
+- **Product details with multiple images**
+- **Add to cart**
+- **Increase / decrease quantity**
+- **Remove from cart**
+- **Toast popup for Add-to-Cart success**
+- **Total amount with two-decimal formatting**
+- **Buy Now → Checkout with single item**
+- **Full Cart → Checkout with all items**
+- **Fully responsive UI**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- **React.js**
+- **Redux Toolkit (cart management)**
+- **React Router**
+- **Vite**
+- **Custom CSS**
+- **Lazy Loading (IntersectionObserver)**
+
+---
+## Installation & Running Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Ganesh-Gandla/ShoppyGlobe.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd <project-folder-name>
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the Development Server
+
+```bash
+npm start
+```
+
