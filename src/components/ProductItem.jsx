@@ -2,13 +2,25 @@ import "../styles/ProductItem.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
-import LazyImage from "./LazyImage";   // <-- import here
+import LazyImage from "./LazyImage";
+import { useState } from "react";
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    dispatch(addToCart(product));
+
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 1500);
+  };
 
   return (
     <div className="pi-card">
+      {/* Popup */}
+      {showPopup && <div className="pi-popup">✔ Added to cart</div>}
 
       <Link to={`/products/${product.id}`} className="pi-link">
         <div className="pi-image-wrapper">
@@ -37,13 +49,7 @@ function ProductItem({ product }) {
       </div>
 
       {/* Group 4: Add to Cart */}
-      <button
-        className="pi-cart-btn"
-        onClick={(e) => {
-          e.stopPropagation();
-          dispatch(addToCart(product));
-        }}
-      >
+      <button className="pi-cart-btn" onClick={handleAddToCart}>
         Add to Cart
       </button>
     </div>

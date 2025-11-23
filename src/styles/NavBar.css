@@ -1,5 +1,32 @@
-/* ---------------- NAVBAR BASE STYLE ---------------- */
+/* NAVBAR CONTAINER */
 .navbar {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  background-color: #000000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1000;
+  margin: auto;
+  border-radius: 10px;
+
+}
+
+/* PERFECT CENTER TITLE */
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  color: white;
+}
+
+/* ---------------- NAVBAR BASE STYLE ---------------- */
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,16 +36,19 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-}
+} */
 
 /* Center title on large screen */
-.title {
+/* .title {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
   flex: 1;
   text-align: center;
-}
+} */
+
+
+
 
 /* ---------------- NAV LINKS ---------------- */
 .nav-links {

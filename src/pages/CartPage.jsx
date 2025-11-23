@@ -38,8 +38,8 @@ function CartPage() {
 
       {cartItems.length > 0 && (
         <div className="cart-summary">
-          <h3>Total: ₹{totalAmount}</h3>
-          <Link to="/CheckOut">
+          <h3>Total: ₹{totalAmount?.toFixed(2)}</h3>
+          <Link to="/checkout">
             <button className="checkout-btn">Proceed to Checkout</button>
           </Link>
         </div>
