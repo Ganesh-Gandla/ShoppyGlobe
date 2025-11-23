@@ -20,7 +20,6 @@ https://github.com/Ganesh-Gandla/ShoppyGlobe.git
 - **Increase / decrease quantity**
 - **Remove from cart**
 - **Toast popup for Add-to-Cart success**
-- **Total amount with two-decimal formatting**
 - **Buy Now → Checkout with single item**
 - **Full Cart → Checkout with all items**
 - **Fully responsive UI**
@@ -48,7 +47,7 @@ git clone https://github.com/Ganesh-Gandla/ShoppyGlobe.git
 ### 2. Navigate to the Project Folder
 
 ```bash
-cd <project-folder-name>
+cd ShoppyGlobe
 ```
 
 ### 3. Install Dependencies
